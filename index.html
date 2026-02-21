@@ -1,609 +1,108 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tecnoconstr Construtora Ltda. — Construção Predial em São Paulo</title>
-  <meta name="description" content="Tecnoconstr Construtora Ltda. — Construção predial em São Paulo, SP. Planejamento, execução, qualidade e conformidade. Solicite orçamento e baixe o portfólio." />
-
-  <style>
-    :root{
-      --bg:#0b1220;
-      --text:#eaf0ff;
-      --muted:#b8c3e6;
-      --line:rgba(255,255,255,.08);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:18px;
-      --max:1120px;
-      --pad:24px;
-      --accent:#5b8cff;
-      --accent2:#22c55e;
-      --warn:#fbbf24;
-      --focus: 0 0 0 4px rgba(91,140,255,.25);
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:var(--font);
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(91,140,255,.35), transparent 60%),
-        radial-gradient(1000px 600px at 85% 20%, rgba(34,197,94,.18), transparent 55%),
-        radial-gradient(900px 600px at 60% 90%, rgba(251,191,36,.12), transparent 55%),
-        var(--bg);
-      line-height:1.55;
-    }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:12px 16px; border-radius:999px;
-      background:linear-gradient(135deg, var(--accent), #7aa7ff);
-      color:#071022; font-weight:900; border:0;
-      box-shadow: var(--shadow);
-      transition: transform .15s ease, filter .15s ease;
-      cursor:pointer;
-    }
-    .btn:hover{transform: translateY(-1px); filter: brightness(1.05)}
-    .btn.secondary{
-      background:transparent; color:var(--text);
-      border:1px solid var(--line);
-      box-shadow:none;
-      font-weight:800;
-    }
-    .btn.secondary:hover{transform:none; background:rgba(255,255,255,.03)}
-    .btn.warn{
-      background: linear-gradient(135deg, var(--warn), #ffd87a);
-      color:#1c1200;
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 12px; border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
-      color:var(--muted);
-      font-size:13px;
-      font-weight:700;
-    }
-
-    header{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.55);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:16px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px; font-weight:950;
-      letter-spacing:.2px;
-    }
-    .logo{
-      width:36px; height:36px; border-radius:10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 10px 20px rgba(0,0,0,.25);
-    }
-    nav ul{list-style:none; margin:0; padding:0; display:flex; gap:14px; align-items:center}
-    nav a{
-      color:var(--muted);
-      padding:8px 10px;
-      border-radius:10px;
-      transition: background .15s ease, color .15s ease;
-      font-weight:800;
-      font-size:14px;
-    }
-    nav a:hover{background:rgba(255,255,255,.04); color:var(--text)}
-    .menuBtn{display:none}
-
-    .hero{padding:70px 0 28px}
-    .heroGrid{
-      display:grid; grid-template-columns: 1.15fr .85fr;
-      gap:28px; align-items:center;
-    }
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(30px, 4vw, 52px);
-      line-height:1.05;
-      letter-spacing:-.6px;
-    }
-    .lead{color:var(--muted); font-size:16px; max-width:68ch}
-    .heroActions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
-
-    .kpis{
-      display:grid; grid-template-columns: repeat(3, 1fr);
-      gap:12px; margin-top:22px;
-    }
-    .kpi{
-      padding:14px; border-radius:var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-    }
-    .kpi strong{display:block; font-size:18px}
-    .kpi span{color:var(--muted); font-size:13px}
-
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .heroCard{padding:18px}
-    .heroCard h3{margin:0 0 8px}
-    .check{display:flex; gap:10px; align-items:flex-start; margin:10px 0; color:var(--muted)}
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      margin-top:6px;
-      background: var(--accent2);
-      box-shadow: 0 0 0 6px rgba(34,197,94,.12);
-      flex:0 0 10px;
-    }
-
-    section{padding:54px 0}
-    .sectionTitle{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:16px;
-      margin-bottom:18px;
-    }
-    .sectionTitle h2{
-      margin:0;
-      font-size: clamp(22px, 2.4vw, 34px);
-      letter-spacing:-.3px;
-    }
-    .sectionTitle p{margin:0; color:var(--muted); max-width:78ch}
-
-    .grid3{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px}
-    .grid2{display:grid; grid-template-columns:repeat(2, 1fr); gap:14px}
-    .tile{padding:16px}
-    .tile h3{margin:8px 0 6px; font-size:16px}
-    .tile p{margin:0; color:var(--muted); font-size:14px}
-
-    .icon{
-      width:40px; height:40px; border-radius:14px;
-      background: rgba(251,191,36,.12);
-      border: 1px solid rgba(251,191,36,.25);
-      display:grid; place-items:center;
-      font-weight:900;
-      color: #ffe7a6;
-    }
-
-    .timeline{display:grid; grid-template-columns:repeat(4, 1fr); gap:14px}
-    .step{padding:16px}
-    .step strong{display:block; margin-top:10px}
-    .step span{display:block; color:var(--muted); font-size:13px; margin-top:6px}
-
-    .cases{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px}
-    .case{padding:16px}
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; border-radius:999px;
-      border:1px solid var(--line);
-      color:var(--muted);
-      font-size:12px;
-      background: rgba(255,255,255,.02);
-      font-weight:700;
-    }
-    .case h3{margin:10px 0 6px}
-    .case p{margin:0; color:var(--muted); font-size:14px}
-
-    .quote{padding:18px}
-    .quote p{margin:0 0 10px; color:var(--text)}
-    .quote small{color:var(--muted)}
-
-    .contactWrap{
-      display:grid; grid-template-columns: .9fr 1.1fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    .contactCard{padding:18px}
-    label{display:block; font-size:13px; color:var(--muted); margin:10px 0 6px; font-weight:700}
-    input, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      color: var(--text);
-      outline:none;
-    }
-    input:focus, textarea:focus{box-shadow: var(--focus); border-color: rgba(91,140,255,.55)}
-    textarea{min-height:120px; resize:vertical}
-    .formRow{display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
-
-    footer{
-      padding:28px 0 40px;
-      border-top:1px solid var(--line);
-      color: var(--muted);
-    }
-    .footerGrid{
-      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
-      align-items:center;
-    }
-    .tiny{font-size:13px}
-
-    @media (max-width: 900px){
-      .heroGrid{grid-template-columns:1fr}
-      .kpis{grid-template-columns:1fr}
-      .grid3{grid-template-columns:1fr}
-      .grid2{grid-template-columns:1fr}
-      .cases{grid-template-columns:1fr}
-      .timeline{grid-template-columns:1fr}
-      .contactWrap{grid-template-columns:1fr}
-      nav ul{display:none}
-      .menuBtn{display:inline-flex}
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="container">
-      <div class="nav">
-        <a class="brand" href="#top" aria-label="Ir para o topo">
-          <div class="logo" aria-hidden="true"></div>
-          <span>Tecnoconstr Construtora Ltda.</span>
-        </a>
-
-        <nav aria-label="Menu principal">
-          <ul id="menu">
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#processo">Processo</a></li>
-            <li><a href="#portfolio">Portfólio</a></li>
-            <li><a href="#depoimentos">Depoimentos</a></li>
-            <li><a href="#contato">Orçamento</a></li>
-          </ul>
-        </nav>
-
-        <button class="btn secondary menuBtn" id="toggleMenu" type="button" aria-expanded="false" aria-controls="mobileMenu">
-          ☰ Menu
-        </button>
-      </div>
-
-      <div id="mobileMenu" style="display:none; padding-bottom:14px;">
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="pill" href="#sobre">Sobre</a>
-          <a class="pill" href="#servicos">Serviços</a>
-          <a class="pill" href="#processo">Processo</a>
-          <a class="pill" href="#portfolio">Portfólio</a>
-          <a class="pill" href="#depoimentos">Depoimentos</a>
-          <a class="pill" href="#contato">Orçamento</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="container">
-        <div class="heroGrid">
-          <div>
-            <span class="pill">🏢 Construção Predial • 📐 Engenharia & execução • 📍 São Paulo, SP</span>
-            <h1>Construção predial com <span style="color:#ffe7a6">gestão</span>, qualidade e conformidade.</h1>
-            <p class="lead">
-              A <strong>Tecnoconstr Construtora Ltda.</strong> atua em <strong>São Paulo, SP</strong>, executando obras prediais com
-              planejamento, segurança, controle de qualidade e acompanhamento técnico do início ao fim.
-            </p>
-
-            <div class="heroActions">
-              <a class="btn" href="#contato">Solicitar orçamento</a>
-              <a class="btn warn" href="portfolio-tecnoconstr.pdf" download>⬇️ Baixar portfólio (PDF)</a>
-              <a class="btn secondary" href="#servicos">Ver serviços</a>
-            </div>
-
-            <div class="kpis">
-              <div class="kpi">
-                <strong>Planejamento</strong>
-                <span>cronograma e etapas claras</span>
-              </div>
-              <div class="kpi">
-                <strong>Segurança</strong>
-                <span>rotinas e boas práticas</span>
-              </div>
-              <div class="kpi">
-                <strong>Transparência</strong>
-                <span>medições e relatórios</span>
-              </div>
-            </div>
-
-            <p class="tiny" style="margin-top:10px; color:var(--muted)">
-              Dica: coloque o arquivo <strong>portfolio-tecnoconstr.pdf</strong> na mesma pasta do site para o botão funcionar.
-            </p>
-          </div>
-
-          <div class="card heroCard">
-            <h3 style="margin:0 0 8px;">Diferenciais</h3>
-            <div class="check"><span class="dot"></span><div><strong>Orçamento e escopo detalhados</strong><br><span class="tiny">Descrição por etapas para evitar aditivos desnecessários.</span></div></div>
-            <div class="check"><span class="dot"></span><div><strong>Gestão de obra e fornecedores</strong><br><span class="tiny">Controle de prazos, compras e qualidade.</span></div></div>
-            <div class="check"><span class="dot"></span><div><strong>Conformidade e documentação</strong><br><span class="tiny">Apoio em regularizações e laudos conforme necessidade.</span></div></div>
-            <div style="height:12px"></div>
-            <div class="badge">🧾 Medições • 📊 Acompanhamento • 🏗️ Execução completa</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="sobre">
-      <div class="container">
-        <div class="sectionTitle">
-          <div>
-            <h2>Sobre a Tecnoconstr</h2>
-            <p>
-              Construtora focada em obras prediais com execução organizada, controle de qualidade e acompanhamento técnico.
-              Se quiser, eu adapto este texto para o seu “tom” (mais formal, mais comercial ou mais técnico).
-            </p>
-          </div>
-        </div>
-
-        <div class="grid2">
-          <div class="card tile">
-            <div class="icon">🏗️</div>
-            <h3>Atuação</h3>
-            <p>Construção predial, reformas, adequações e execução de serviços complementares conforme escopo.</p>
-          </div>
-          <div class="card tile">
-            <div class="icon">✅</div>
-            <h3>Compromisso</h3>
-            <p>Planejamento, segurança, qualidade e transparência — com comunicação clara durante toda a obra.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="servicos">
-      <div class="container">
-        <div class="sectionTitle">
-          <div>
-            <h2>Serviços — Construção Predial</h2>
-            <p>Lista ampla para “construção completa”. Se preferir, eu deixo mais enxuta para conversão (menos texto, mais foco).</p>
-          </div>
-        </div>
-
-        <div class="grid3">
-          <div class="card tile">
-            <div class="icon">🧱</div>
-            <h3>Estrutura & alvenaria</h3>
-            <p>Fundações, contenções (quando aplicável), estrutura, vedação, alvenaria e preparação para acabamento.</p>
-          </div>
-
-          <div class="card tile">
-            <div class="icon">⚡</div>
-            <h3>Instalações</h3>
-            <p>Elétrica, hidráulica, esgoto, pluvial, gás (quando aplicável), infraestrutura e adequações técnicas.</p>
-          </div>
-
-          <div class="card tile">
-            <div class="icon">🧰</div>
-            <h3>Acabamentos</h3>
-            <p>Revestimentos, pisos, forros, pintura, esquadrias, impermeabilização e detalhamentos finais.</p>
-          </div>
-
-          <div class="card tile">
-            <div class="icon">📐</div>
-            <h3>Gestão de obra</h3>
-            <p>Planejamento, cronograma, medição, suprimentos, coordenação de equipes e controle de qualidade.</p>
-          </div>
-
-          <div class="card tile">
-            <div class="icon">🛡️</div>
-            <h3>Segurança e conformidade</h3>
-            <p>Rotinas de segurança, organização do canteiro e suporte à documentação conforme necessidade do projeto.</p>
-          </div>
-
-          <div class="card tile">
-            <div class="icon">🏢</div>
-            <h3>Reformas e adequações</h3>
-            <p>Retrofit, revitalizações, adequação de espaços, manutenção predial e melhorias contínuas.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="processo">
-      <div class="container">
-        <div class="sectionTitle">
-          <div>
-            <h2>Como funciona</h2>
-            <p>Processo claro para reduzir ruído e acelerar decisões.</p>
-          </div>
-        </div>
-
-        <div class="timeline">
-          <div class="card step">
-            <div class="icon">1</div>
-            <strong>Briefing</strong>
-            <span>Entendimento do escopo, prazos, orçamento e necessidades do empreendimento.</span>
-          </div>
-          <div class="card step">
-            <div class="icon">2</div>
-            <strong>Visita & levantamento</strong>
-            <span>Medições, análise técnica e alinhamento do que será executado.</span>
-          </div>
-          <div class="card step">
-            <div class="icon">3</div>
-            <strong>Proposta</strong>
-            <span>Orçamento detalhado + cronograma e condições de execução.</span>
-          </div>
-          <div class="card step">
-            <div class="icon">4</div>
-            <strong>Execução</strong>
-            <span>Obra com acompanhamento, medições e controle de qualidade.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio">
-      <div class="container">
-        <div class="sectionTitle">
-          <div>
-            <h2>Portfólio</h2>
-            <p>
-              Coloque seu PDF na pasta do site com o nome <strong>portfolio-tecnoconstr.pdf</strong>.
-              Se quiser, posso te passar um modelo de portfólio (capa, obras, serviços, certificados).
-            </p>
-          </div>
-        </div>
-
-        <div class="grid2">
-          <div class="card tile">
-            <div class="icon">📄</div>
-            <h3>Baixar portfólio (PDF)</h3>
-            <p>Apresente obras, escopo, fotos, prazos, e diferenciais da Tecnoconstr.</p>
-            <div style="height:12px"></div>
-            <a class="btn warn" href="portfolio-tecnoconstr.pdf" download>⬇️ Baixar agora</a>
-          </div>
-
-          <div class="card tile">
-            <div class="icon">🧩</div>
-            <h3>O que incluir no PDF</h3>
-            <p class="tiny" style="margin:0; color:var(--muted)">
-              • Capa + resumo da empresa<br/>
-              • Serviços (predial) + metodologia<br/>
-              • Obras (antes/depois) e descrições<br/>
-              • Padrão de qualidade/segurança<br/>
-              • Contatos e e-mail para orçamento
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="depoimentos">
-      <div class="container">
-        <div class="sectionTitle">
-          <div>
-            <h2>Depoimentos</h2>
-            <p>Substitua por depoimentos reais (nome + bairro/empresa) para aumentar a confiança.</p>
-          </div>
-        </div>
-
-        <div class="grid3">
-          <div class="card quote">
-            <p>“Obra organizada, comunicação clara e entrega conforme cronograma. Recomendo.”</p>
-            <small>— Cliente, São Paulo</small>
-          </div>
-          <div class="card quote">
-            <p>“Equipe técnica atenciosa e acabamento caprichado. Ótima experiência.”</p>
-            <small>— Cliente, SP</small>
-          </div>
-          <div class="card quote">
-            <p>“Transparência nas medições e bom controle de qualidade ao longo do projeto.”</p>
-            <small>— Cliente, obra predial</small>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contato">
-      <div class="container">
-        <div class="sectionTitle">
-          <div>
-            <h2>Solicite orçamento</h2>
-            <p>O formulário abaixo está como demonstração (abre o app de e-mail). Posso integrar para enviar direto.</p>
-          </div>
-        </div>
-
-        <div class="contactWrap">
-          <div class="card contactCard">
-            <h3 style="margin:0 0 10px;">Tecnoconstr Construtora Ltda.</h3>
-            <p style="margin:0; color:var(--muted)">
-              📍 São Paulo, SP<br/>
-              📧 contato@tecnoconstr.com.br<br/>
-              <span class="tiny">Telefone fixo (opcional) • CNPJ (opcional)</span>
-            </p>
-            <div style="height:14px"></div>
-            <a class="btn secondary" href="#top">Voltar ao topo</a>
-          </div>
-
-          <<form class="card contactCard"
-      action="https://formsubmit.co/contato@tecnoconstr.com.br"
-      method="POST">
-
-  <input type="hidden" name="_subject" value="Novo pedido de orçamento — Tecnoconstr">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-
-  <div class="formRow">
-    <div>
-      <label for="nome">Nome</label>
-      <input id="nome" name="nome" required placeholder="Seu nome" />
-    </div>
-    <div>
-      <label for="email">E-mail</label>
-      <input id="email" name="email" type="email" required placeholder="seuemail@dominio.com" />
-    </div>
-  </div>
-
-  <label for="empresa">Empresa/Condomínio (opcional)</label>
-  <input id="empresa" name="empresa" placeholder="Ex: Condomínio X / Empresa Y" />
-
-  <label for="tipo">Tipo de demanda</label>
-  <input id="tipo" name="tipo" required placeholder="Ex: Construção predial, reforma..." />
-
-  <label for="mensagem">Detalhes do projeto</label>
-  <textarea id="mensagem" name="mensagem" required placeholder="Endereço, metragem, prazo..."></textarea>
-
-  <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:12px;">
-    <button class="btn" type="submit">Enviar pedido</button>
-    <span class="tiny" id="status" style="color:var(--muted)"></span>
-  </div>
-</form>
-<div id="sucesso" style="display:none; margin-top:12px; color:#22c55e; font-weight:700;">
-  Pedido enviado com sucesso! Entraremos em contato.
-</div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footerGrid">
-        <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
-          <span>Tecnoconstr Construtora Ltda.</span>
-        </div>
-        <div class="tiny">© <span id="year"></span> Tecnoconstr Construtora Ltda. Todos os direitos reservados.</div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Ano automático
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Menu mobile
-    const btn = document.getElementById("toggleMenu");
-    const mobile = document.getElementById("mobileMenu");
-    btn?.addEventListener("click", () => {
-      const open = mobile.style.display !== "none";
-      mobile.style.display = open ? "none" : "block";
-      btn.setAttribute("aria-expanded", String(!open));
-    });
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tecnoconstr Construtora Ltda.</title>
 
 <style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1220;color:#fff}
-.container{max-width:1100px;margin:auto;padding:20px}
-header{background:#0b1220;border-bottom:1px solid rgba(255,255,255,.08)}
-.nav{display:flex;justify-content:space-between;align-items:center}
-.brand{display:flex;align-items:center;gap:12px;font-weight:bold}
-.logo-img{height:70px;width:auto}
-nav ul{list-style:none;display:flex;gap:14px;padding:0;margin:0}
-nav a{color:#b8c3e6;text-decoration:none;font-weight:bold}
-nav a:hover{color:#fff}
-.hero{padding:60px 0}
-footer{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding:20px 0;color:#b8c3e6}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0b1220;
+  color:#fff;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+header{
+  background:#0b1220;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:bold;
+}
+
+.logo-img{
+  height:70px;
+  width:auto;
+  display:block;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:14px;
+  padding:0;
+  margin:0;
+}
+
+nav a{
+  color:#b8c3e6;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+nav a:hover{
+  color:#fff;
+}
+
+.hero{
+  padding:60px 0;
+}
+
+section{
+  padding:40px 0;
+}
+
+h1,h2{
+  margin-top:0;
+}
+
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin-top:6px;
+  margin-bottom:14px;
+  border-radius:6px;
+  border:none;
+}
+
+button{
+  background:#5b8cff;
+  color:#000;
+  font-weight:bold;
+  padding:12px 20px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#7aa7ff;
+}
+
+footer{
+  border-top:1px solid rgba(255,255,255,.08);
+  margin-top:40px;
+  padding:20px 0;
+  color:#b8c3e6;
+}
 </style>
 </head>
 
@@ -611,6 +110,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding:20px 0
 
 <header>
 <div class="container nav">
+
 <div class="brand">
 <img src="logo-tecnoconstr.png" alt="Tecnoconstr" class="logo-img">
 </div>
@@ -623,6 +123,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding:20px 0
 <li><a href="#contato">Orçamento</a></li>
 </ul>
 </nav>
+
 </div>
 </header>
 
@@ -675,7 +176,6 @@ footer{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding:20px 0
 <label>Detalhes</label>
 <textarea name="mensagem" required></textarea>
 
-<br><br>
 <button type="submit">Enviar pedido</button>
 
 </form>
@@ -683,10 +183,13 @@ footer{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding:20px 0
 
 <footer>
 <div class="container nav">
+
 <div class="brand">
 <img src="logo-tecnoconstr.png" alt="Tecnoconstr" class="logo-img">
 </div>
+
 <div>© <span id="year"></span> Tecnoconstr Construtora Ltda.</div>
+
 </div>
 </footer>
 
