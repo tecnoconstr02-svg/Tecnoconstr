@@ -585,66 +585,114 @@
       mobile.style.display = open ? "none" : "block";
       btn.setAttribute("aria-expanded", String(!open));
     });
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Tecnoconstr Construtora Ltda.</title>
 
-    // Scroll suave em links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (e) => {
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-        // fecha menu mobile ao clicar
-        if (mobile.style.display !== "none") {
-          mobile.style.display = "none";
-          btn.setAttribute("aria-expanded", "false");
-        }
-      });
-    });
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1220;color:#fff}
+.container{max-width:1100px;margin:auto;padding:20px}
+header{background:#0b1220;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:12px;font-weight:bold}
+.logo-img{height:70px;width:auto}
+nav ul{list-style:none;display:flex;gap:14px;padding:0;margin:0}
+nav a{color:#b8c3e6;text-decoration:none;font-weight:bold}
+nav a:hover{color:#fff}
+.hero{padding:60px 0}
+footer{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding:20px 0;color:#b8c3e6}
+</style>
+</head>
 
-    // Formulário (demo): abre e-mail com mensagem pronta.
-    function sendMessage(e){
-      e.preventDefault();
-      const nome = document.getElementById("nome").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const empresa = document.getElementById("empresa").value.trim();
-      const tipo = document.getElementById("tipo").value.trim();
-      const msg = document.getElementById("mensagem").value.trim();
-      const status = document.getElementById("status");
+<body>
 
-      const mailTo = "contato@tecnoconstr.com.br"; // ajuste se necessário
-      const subject = encodeURIComponent(`[Site] Solicitação de orçamento — ${tipo}`);
-      const body = encodeURIComponent(
-        `Nome: ${nome}\nE-mail: ${email}\nEmpresa/Condomínio: ${empresa}\nTipo de demanda: ${tipo}\n\nDetalhes:\n${msg}\n`
-      );
+<header>
+<div class="container nav">
+<div class="brand">
+<img src="logo-tecnoconstr.png" alt="Tecnoconstr" class="logo-img">
+</div>
 
-      status.textContent = "Abrindo seu e-mail…";
-      window.location.href = `mailto:${mailTo}?subject=${subject}&body=${body}`;
-      setTimeout(()=> status.textContent = "Se não abrir, verifique seu app de e-mail.", 1200);
-      return false;
-    }
-  </script// Validação e mensagem de sucesso
-document.querySelector("form").addEventListener("submit", function(e){
-  const nome = document.getElementById("nome").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const tipo = document.getElementById("tipo").value.trim();
-  const msg = document.getElementById("mensagem").value.trim();
-  const status = document.getElementById("status");
+<nav>
+<ul>
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#servicos">Serviços</a></li>
+<li><a href="#portfolio">Portfólio</a></li>
+<li><a href="#contato">Orçamento</a></li>
+</ul>
+</nav>
+</div>
+</header>
 
-  if(!nome || !email || !tipo || !msg){
-    e.preventDefault();
-    status.textContent = "Preencha todos os campos obrigatórios.";
-    status.style.color = "#fbbf24";
-    return;
-  }
+<section class="hero container">
+<h1>Construção predial com gestão, qualidade e conformidade</h1>
+<p>A Tecnoconstr Construtora Ltda. atua em São Paulo executando obras prediais com planejamento, segurança e controle de qualidade.</p>
+</section>
 
-  status.textContent = "Enviando pedido...";
-  status.style.color = "#b8c3e6";
+<section id="sobre" class="container">
+<h2>Sobre</h2>
+<p>Construtora focada em obras prediais com execução organizada e acompanhamento técnico.</p>
+</section>
 
-  setTimeout(()=>{
-    document.getElementById("sucesso").style.display = "block";
-  }, 1200);
-});>
+<section id="servicos" class="container">
+<h2>Serviços</h2>
+<ul>
+<li>Estrutura e alvenaria</li>
+<li>Instalações elétricas e hidráulicas</li>
+<li>Acabamentos</li>
+<li>Gestão de obra</li>
+<li>Reformas prediais</li>
+</ul>
+</section>
+
+<section id="portfolio" class="container">
+<h2>Portfólio</h2>
+<a href="portfolio-tecnoconstr.pdf" download>Baixar portfólio</a>
+</section>
+
+<section id="contato" class="container">
+<h2>Solicite orçamento</h2>
+
+<form action="https://formsubmit.co/contato@tecnoconstr.com.br" method="POST">
+
+<input type="hidden" name="_subject" value="Novo pedido de orçamento — Tecnoconstr">
+<input type="hidden" name="_captcha" value="false">
+
+<label>Nome</label>
+<input name="nome" required>
+
+<label>E-mail</label>
+<input name="email" type="email" required>
+
+<label>Empresa/Condomínio</label>
+<input name="empresa">
+
+<label>Tipo de demanda</label>
+<input name="tipo" required>
+
+<label>Detalhes</label>
+<textarea name="mensagem" required></textarea>
+
+<br><br>
+<button type="submit">Enviar pedido</button>
+
+</form>
+</section>
+
+<footer>
+<div class="container nav">
+<div class="brand">
+<img src="logo-tecnoconstr.png" alt="Tecnoconstr" class="logo-img">
+</div>
+<div>© <span id="year"></span> Tecnoconstr Construtora Ltda.</div>
+</div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
